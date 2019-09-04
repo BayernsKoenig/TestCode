@@ -1,0 +1,83 @@
+# Mind Manager
+
+	'# ActiveDocument.CentralTopic.Filtered = True
+	
+http://wiki.activityowner.com/index.php?title=MindManager_Macro_Library
+
+ActiveDocument
+
+Sub Main
+
+	Dim count As Integer
+	Dim i As Integer
+	staticOffset = 5
+
+	Dim subtopics As Topics
+	Set subtopics = ActiveDocument.CentralTopic.SubTopics
+
+	Dim Top As Single
+	Dim Left As Single
+	Dim Width As Single
+	Dim Height As Single
+
+	ActiveDocument.CentralTopic.GetBoundingRect(Top, Left, Width, Height)
+
+	count = subtopics.Count
+
+	For i = 1 To count
+		Dim aTopic As Topic
+		Set aTopic = subtopics.Item(i)
+
+		aTopic.SetOffset(Left + Width + staticOffset, 0)
+	Next i
+
+End Sub
+
+
+https://groups.yahoo.com/neo/groups/MindManagerDev/conversations/topics/262
+
+Sub Makro1()
+'
+' Makro1 Makro
+'
+'
+    Dim wDoc As Word.Document
+    
+    Set wDoc = ActiveDocument
+    
+    With wDoc
+        .Range(0).Style = wDoc.Styles("Titel")
+        .Content.InsertAfter ("Fragebogen - Abteilung: ")
+        .Content.InsertParagraphAfter
+        
+        .Range(.Characters.Count - 1).Style = wDoc.Styles("Überschrift 1")
+        .Content.InsertAfter ("xyxyfas")
+        .Content.InsertParagraphAfter
+        
+    End With
+End Sub
+
+Sub Makro1()
+'
+' Makro1 Makro
+'
+'
+    Selection.Style = ActiveDocument.Styles("Titel")
+    Selection.TypeParagraph
+    Selection.Style = ActiveDocument.Styles("Überschrift 1")
+    Selection.TypeText Text:="Test Überschrift 1"
+    Selection.TypeParagraph
+    Selection.Style = ActiveDocument.Styles("Überschrift 2")
+    Selection.TypeText Text:="test Überschrift 2"
+    Selection.TypeParagraph
+    Selection.Style = ActiveDocument.Styles("Standard")
+    Selection.TypeText Text:="Ich schreibe meine frage"
+    Selection.TypeParagraph
+    Selection.Style = ActiveDocument.Styles("Kein Leerraum")
+    Selection.TypeText Text:="mit meinenen Kommentaren"
+    Selection.TypeParagraph
+    Selection.TypeParagraph
+    Selection.Style = ActiveDocument.Styles("Überschrift 1")
+    Selection.TypeText Text:="une neuer Überschrift"
+    Selection.TypeParagraph
+End Sub
