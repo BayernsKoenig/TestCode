@@ -1,4 +1,4 @@
-# Mind Manager
+# Mind Manager - V2
 
 	'# ActiveDocument.CentralTopic.Filtered = True
 	
